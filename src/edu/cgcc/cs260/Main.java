@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) {
 		//instantiate new song play list
 		Playlist songPlaylist = new Playlist();
-		String root = "E:\\git\\cs260_wk4_le2_prep\\bin\\edu\\cgcc\\cs260\\";
+		String root = "C:\\Users\\podium\\git\\cs260_wk4_le2\\src\\rec\\";
 		
 		
 		//insert songs
@@ -32,9 +32,41 @@ public class Main {
 		System.out.println();
 		songPlaylist.print();
 		
+		//Keep track of recently played songs
+		MusicStack musicStack = new MusicStack(2);
+		System.out.println();
+		musicStack.push(songPlaylist.getSongAtPosition(2));
+		musicStack.push(songPlaylist.getSongAtPosition(0));
+		//musicStack.push(songPlaylist.getSongAtPosition(1));
+		
+		//Keep track of songs playing
+		MusicQueue musicQueue = new MusicQueue(4);
+		
+		musicQueue.enQueue(songPlaylist.getSongAtPosition(2));
+		musicQueue.enQueue(songPlaylist.getSongAtPosition(0));
+		
+		System.out.println("Stack");
+		System.out.println(musicStack.pop().name);
+		System.out.println(musicStack.pop().name);
+		System.out.println();
+		System.out.println("Queue");
+		System.out.println(musicQueue.deQueue().name);
+		System.out.println(musicQueue.deQueue().name);
 		
 		
-		//Test audio play
+		/*
+		for(int i = 0; i < musicStack.maxSize; i++) {
+			System.out.println(musicStack.stackArray[i].name);
+		}
+		
+		
+		System.out.println();
+		for(int i = 0; i < musicQueue.size(); i++) {
+			System.out.println(musicQueue.qArray[i].name);
+		}
+		*/
+		
+		/*//Test audio play
 		try {
 			SimpleAudioPlayer player;
         	Scanner sc = new Scanner(System.in);
@@ -65,6 +97,7 @@ public class Main {
 		catch(Exception e) {
 			System.out.println(e.getMessage() + "\n" + e.getStackTrace()[0]);
 		}
+		*/
 
 	}
 
